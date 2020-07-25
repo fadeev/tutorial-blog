@@ -16,6 +16,7 @@ func RegisterRoutes(cliCtx context.CLIContext, r *mux.Router) {
 	// this line is used by starport scaffolding
 	r.HandleFunc("/faucet", faucetHandler(cliCtx)).Methods("POST")
 	r.HandleFunc("/blog/posts", listPostsHandler(cliCtx, "blog")).Methods("GET")
+	r.HandleFunc("/blog/posts", createPostHandler(cliCtx)).Methods("POST")
 }
 
 func listPostsHandler(cliCtx context.CLIContext, storeName string) http.HandlerFunc {

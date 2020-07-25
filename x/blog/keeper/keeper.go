@@ -35,6 +35,13 @@ func (k Keeper) Logger(ctx sdk.Context) log.Logger {
 	return ctx.Logger().With("module", fmt.Sprintf("x/%s", types.ModuleName))
 }
 
+func (k Keeper) CreatePost(ctx sdk.Context, post types.Post) {
+	store := ctx.KVStore(k.storeKey)
+	key := []byte(types.PostPrefix + post.ID)
+	value := k.cdc.MustMarshalBinaryLengthPrefixed(post)
+	store.Set(key, value)
+}
+
 // Get returns the pubkey from the adddress-pubkey relation
 // func (k Keeper) Get(ctx sdk.Context, key string) (/* TODO: Fill out this type */, error) {
 // 	store := ctx.KVStore(k.storeKey)

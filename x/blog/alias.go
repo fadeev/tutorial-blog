@@ -38,3 +38,13 @@ type (
 
 	// TODO: Fill out module types
 )
+
+var (
+	// ...
+	NewMsgCreatePost = types.NewMsgCreatePost
+)
+
+type (
+	// ...
+	MsgCreatePost = types.MsgCreatePost
+)
